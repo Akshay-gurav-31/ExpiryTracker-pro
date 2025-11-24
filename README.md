@@ -214,4 +214,5 @@ For issues or questions, please open an issue on GitHub.
 
 ---
 
-**Made with ❤️ using Supabase**
+**Made by Akshay**
+
