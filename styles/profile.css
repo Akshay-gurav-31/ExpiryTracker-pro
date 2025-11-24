@@ -1,0 +1,468 @@
+/* Profile Page Styles */
+
+.profile-container {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    padding: 2rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.profile-header {
+    max-width: 1000px;
+    margin: 0 auto 2rem;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    transition: color var(--transition-base);
+}
+
+.back-btn:hover {
+    color: var(--primary-color);
+}
+
+.profile-header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.profile-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.profile-card,
+.stats-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base);
+}
+
+/* Avatar Section */
+.avatar-section {
+    text-align: center;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 2.5rem;
+}
+
+.avatar-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+    transition: transform var(--transition-base);
+}
+
+.avatar-wrapper img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.avatar-edit-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: 3px solid var(--card-bg);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.avatar-edit-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.avatar-hint {
+    color: var(--text-tertiary);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Profile Form */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.disabled-input {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+    border-color: transparent;
+}
+
+.form-hint {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+}
+
+/* Form Input Styles */
+.form-group input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.form-group input::placeholder {
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+/* Toggle Switch */
+.toggle-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.toggle-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: var(--input-bg);
+    border-radius: var(--radius-md);
+    gap: 1rem;
+    transition: all var(--transition-base);
+    border: 1px solid var(--border-color);
+}
+
+.toggle-item h4 {
+    font-size: 1rem;
+    margin: 0 0 0.25rem 0;
+    color: var(--text-primary);
+}
+
+.toggle-item p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--border-color);
+    transition: var(--transition-base);
+    border-radius: 28px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background: white;
+    transition: var(--transition-base);
+    border-radius: 50%;
+}
+
+.toggle-switch input:checked+.toggle-slider {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.toggle-switch input:checked+.toggle-slider:before {
+    transform: translateX(24px);
+}
+
+/* Notification Status */
+.notification-status {
+    margin-top: 1rem;
+}
+
+.status-message {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+}
+
+.status-message.success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: var(--success-color);
+}
+
+.status-message.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--danger-color);
+}
+
+.status-message.info {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: var(--info-color);
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 1rem;
+}
+
+/* Statistics Card */
+.stats-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--input-bg);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    border: 1px solid var(--border-color);
+}
+
+.stat-item:hover {
+    background: var(--bg-tertiary);
+    transform: translateX(4px);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive Design */
+/* Large Tablets and Small Desktops */
+@media (max-width: 1024px) {
+    .profile-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .profile-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .profile-card,
+    .stats-card {
+        padding: 1.5rem;
+    }
+
+    .avatar-wrapper img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .avatar-edit-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+    .stats-grid {
+        gap: 1rem;
+    }
+
+    .toggle-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-switch {
+        align-self: flex-end;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+    .profile-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .profile-card,
+    .stats-card {
+        padding: 1.25rem;
+        border-radius: var(--radius-lg);
+    }
+
+    .avatar-wrapper img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .avatar-edit-btn {
+        width: 38px;
+        height: 38px;
+        bottom: 2px;
+        right: 2px;
+    }
+
+    .form-section {
+        gap: 1rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+    
+    .profile-container {
+        padding: 1rem 0.5rem;
+    }
+    
+    .profile-card,
+    .stats-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 320px) {
+    .profile-header h1 {
+        font-size: 1.25rem;
+    }
+    
+    .profile-card,
+    .stats-card {
+        padding: 1rem;
+    }
+    
+    .avatar-wrapper img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .stat-value {
+        font-size: 1.25rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+}
