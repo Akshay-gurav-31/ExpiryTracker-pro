@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - ExpiryTracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div class="profile-container">
+        <header class="profile-header">
+            <a href="dashboard.html" class="back-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back to Dashboard
+            </a>
+            <h1>Profile Settings</h1>
+        </header>
+
+        <div class="profile-content">
+            <div class="profile-card">
+                <div class="avatar-section">
+                    <div class="avatar-wrapper">
+                        <img src="" alt="Avatar" id="avatarPreview">
+                        <button type="button" class="avatar-edit-btn" id="editAvatarBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                                <circle cx="12" cy="13" r="4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                    <p class="avatar-hint">Click the camera icon to change your avatar</p>
+                </div>
+
+                <form id="profileForm" class="profile-form">
+                    <div class="form-section">
+                        <h2>Personal Information</h2>
+
+                        <div class="form-group">
+                            <label for="profileName">Full Name</label>
+                            <input type="text" id="profileName" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profileEmail">Email Address</label>
+                            <input type="email" id="profileEmail" disabled class="disabled-input">
+                            <small class="form-hint">Email cannot be changed</small>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>Notifications</h2>
+
+                        <div class="toggle-group">
+                            <div class="toggle-item">
+                                <div>
+                                    <h4>Push Notifications</h4>
+                                    <p>Get notified about expiring items</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="notificationsEnabled">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="notificationStatus" class="notification-status"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='dashboard.html'">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="saveProfileBtn">
+                            <span>Save Changes</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="stats-card">
+                <h2>Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7" rx="1" />
+                                <rect x="14" y="3" width="7" height="7" rx="1" />
+                                <rect x="14" y="14" width="7" height="7" rx="1" />
+                                <rect x="3" y="14" width="7" height="7" rx="1" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="totalItems">0</div>
+                            <div class="stat-label">Total Items</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="expiringSoon">0</div>
+                            <div class="stat-label">Expiring Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="15" y1="9" x2="9" y2="15" />
+                                <line x1="9" y1="9" x2="15" y2="15" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="expiredItems">0</div>
+                            <div class="stat-label">Expired</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="profile.js"></script>
+</body>
+
+</html>
