@@ -99,6 +99,47 @@ CREATE TRIGGER update_expiry_items_updated_at
     BEFORE UPDATE ON expiry_items
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
+-- Storage Policies (for avatars bucket)
+-- Note: Create the 'avatars' bucket in Supabase Storage first
+-- Then uncomment and run these policies:
+
+/*
+-- Allow users to upload their own avatars
+CREATE POLICY "Users can upload their own avatar"
+    ON storage.objects FOR INSERT
+    WITH CHECK (
+        bucket_id = 'avatars' AND
+        auth.uid()::text = (storage.foldername(name))[1]
+    );
+
+-- Allow users to update their own avatars
+CREATE POLICY "Users can update their own avatar"
+    ON storage.objects FOR UPDATE
+    USING (
+        bucket_id = 'avatars' AND
+        auth.uid()::text = (storage.foldername(name))[1]
+    );
+
+-- Allow users to delete their own avatars
+CREATE POLICY "Users can delete their own avatar"
+    ON storage.objects FOR DELETE
+    USING (
+        bucket_id = 'avatars' AND
+        auth.uid()::text = (storage.foldername(name))[1]
+    );
+
+-- Allow public read access to avatars
+CREATE POLICY "Avatars are publicly accessible"
+    ON storage.objects FOR SELECT
+    USING (bucket_id = 'avatars');
+*/
+
+-- Indexes for better performance
+CREATE INDEX IF NOT EXISTS idx_expiry_items_user_id ON expiry_items(user_id);
+CREATE INDEX IF NOT EXISTS idx_expiry_items_expiry_date ON expiry_items(expiry_date);
+CREATE INDEX IF NOT EXISTS idx_expiry_items_created_at ON expiry_items(created_at);
+
+
 -- Storage Buckets Setup
 -- Note: Run these commands in Supabase SQL Editor to create buckets and policies
 
